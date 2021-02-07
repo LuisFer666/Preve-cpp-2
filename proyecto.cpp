@@ -5,7 +5,26 @@
 
 using namespace std;
 
+void leerContenido();
+
 string contenido;
+
+int main(){    
+    leerContenido();
+        
+    string lenguajeFake = "((AB?(CDF?E(GH)+(((I|J|k)|L)+M)+)?)+(((A?(B|(L|(N|Ñ|O|P))))+(Q(R|S))?)*)(DFG)?)*";
+    
+    string lenguajeOK = "((AB?(CDF?E(GH)+(((IJK)|L)+M)+)?)+(((A?(B|(L|(N|Ñ|O|P))))+(Q(R|S))?)*)(DFG)?)*";
+    
+    string a1 = "(a2)*";
+    string a2 = "(a3)+()(DFG)?";
+    string a3 = "AB?()?";
+    string a4 = "CDF?E(GH)+()+"
+    
+    regex expresion("(DFG)?");    
+    bool cosa = regex_match(contenido, expresion);    
+    cout << (cosa)?"Si\n":"No\n";
+}
 
 void leerContenido(){
     string archivo;
@@ -20,6 +39,7 @@ void leerContenido(){
             contenido+=c;
         }
         cout << archivo << " abierto\n";
+        cout << "Contenido:\n[" << contenido <<"]\n";
         is.close(); // Cerrar el buffer
     }else{
         cout << "No se pudo abrir el archivo\n";
@@ -27,18 +47,4 @@ void leerContenido(){
         exit(0);
     }
 }
-
-int main(){    
-    leerContenido();
-    
-    string e1 = "[ \\n]*startPrevebot[ \\n]*\\{[ \\n]*"; // startPrevebot {
-    string e2 = "(r144|r256|r259)*";
-    string e3 = "[ \\n]*endPrevebot;[ \\n]*}"; // endPrevebot;}
-    
-    regex expresion("[ \\n]*startPrevebot[ \\n]*\\{[ \\n]*(r144|r256|r259)*[ \\n]*endPrevebot;[ \\n]*}");    
-    bool cosa = regex_match(contenido, expresion);    
-    cout << (cosa)?"Si\n":"No\n";
-}
-
-
 
