@@ -1,0 +1,679 @@
+Gramática
+
+    0 $accept: SEN $end
+
+    1 SEN: SP LA C LC
+
+    2 C: MV C
+    3  | MV
+
+    4 MV: TR
+    5   | AA
+    6   | SS
+    7   | DR
+    8   | TRS
+    9   | ALT
+   10   | ACT
+
+   11 TR: TRN DOT DIR
+
+   12 AA: ED2 PAR1
+
+   13 SS: SE DOT TIG1 PAR2
+
+   14 DR: OCD PAR4
+
+   15 TRS: TS DOT TIG2 PAR3
+
+   16 ALT: AL TP
+
+   17 ACT: NA1 PAR1
+   18    | NA2 PAR2
+
+   19 TP: PAR3
+   20   | DOT MS
+
+   21 MS: CLN PAR2
+   22   | LBT PAR2
+   23   | TIG1 PAR4
+
+   24 DIR: ED1 PAR1
+
+   25 PAR1: PA NUM PC PTC
+
+   26 PAR2: PA PC PTC
+
+   27 PAR3: PA ST PC PTC
+
+   28 PAR4: PA BIN PC PTC
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+error (256)
+SP (258) 1
+NA1 (259) 17
+NA2 (260) 18
+CLN (261) 21
+LBT (262) 22
+AL (263) 16
+TS (264) 15
+OCD (265) 14
+SE (266) 13
+TIG1 (267) 13 23
+TIG2 (268) 15
+TRN (269) 11
+ED1 (270) 24
+ED2 (271) 12
+BIN (272) 28
+LA (273) 1
+LC (274) 1
+ST (275) 27
+PA (276) 25 26 27 28
+PTC (277) 25 26 27 28
+DOT (278) 11 13 15 20
+NUM (279) 25
+PC (280) 25 26 27 28
+
+
+No terminales con las reglas donde aparecen
+
+$accept (26)
+    en la izquierda: 0
+SEN (27)
+    en la izquierda: 1, en la derecha: 0
+C (28)
+    en la izquierda: 2 3, en la derecha: 1 2
+MV (29)
+    en la izquierda: 4 5 6 7 8 9 10, en la derecha: 2 3
+TR (30)
+    en la izquierda: 11, en la derecha: 4
+AA (31)
+    en la izquierda: 12, en la derecha: 5
+SS (32)
+    en la izquierda: 13, en la derecha: 6
+DR (33)
+    en la izquierda: 14, en la derecha: 7
+TRS (34)
+    en la izquierda: 15, en la derecha: 8
+ALT (35)
+    en la izquierda: 16, en la derecha: 9
+ACT (36)
+    en la izquierda: 17 18, en la derecha: 10
+TP (37)
+    en la izquierda: 19 20, en la derecha: 16
+MS (38)
+    en la izquierda: 21 22 23, en la derecha: 20
+DIR (39)
+    en la izquierda: 24, en la derecha: 11
+PAR1 (40)
+    en la izquierda: 25, en la derecha: 12 17 24
+PAR2 (41)
+    en la izquierda: 26, en la derecha: 13 18 21 22
+PAR3 (42)
+    en la izquierda: 27, en la derecha: 15 19
+PAR4 (43)
+    en la izquierda: 28, en la derecha: 14 23
+
+
+estado 0
+
+    0 $accept: . SEN $end
+    1 SEN: . SP LA C LC
+
+    SP  desplazar e ir al estado 1
+
+    SEN  ir al estado 2
+
+
+estado 1
+
+    1 SEN: SP . LA C LC
+
+    LA  desplazar e ir al estado 3
+
+
+estado 2
+
+    0 $accept: SEN . $end
+
+    $end  desplazar e ir al estado 4
+
+
+estado 3
+
+    1 SEN: SP LA . C LC
+    2 C: . MV C
+    3  | . MV
+    4 MV: . TR
+    5   | . AA
+    6   | . SS
+    7   | . DR
+    8   | . TRS
+    9   | . ALT
+   10   | . ACT
+   11 TR: . TRN DOT DIR
+   12 AA: . ED2 PAR1
+   13 SS: . SE DOT TIG1 PAR2
+   14 DR: . OCD PAR4
+   15 TRS: . TS DOT TIG2 PAR3
+   16 ALT: . AL TP
+   17 ACT: . NA1 PAR1
+   18    | . NA2 PAR2
+
+    NA1  desplazar e ir al estado 5
+    NA2  desplazar e ir al estado 6
+    AL   desplazar e ir al estado 7
+    TS   desplazar e ir al estado 8
+    OCD  desplazar e ir al estado 9
+    SE   desplazar e ir al estado 10
+    TRN  desplazar e ir al estado 11
+    ED2  desplazar e ir al estado 12
+
+    C    ir al estado 13
+    MV   ir al estado 14
+    TR   ir al estado 15
+    AA   ir al estado 16
+    SS   ir al estado 17
+    DR   ir al estado 18
+    TRS  ir al estado 19
+    ALT  ir al estado 20
+    ACT  ir al estado 21
+
+
+estado 4
+
+    0 $accept: SEN $end .
+
+    $default  aceptar
+
+
+estado 5
+
+   17 ACT: NA1 . PAR1
+   25 PAR1: . PA NUM PC PTC
+
+    PA  desplazar e ir al estado 22
+
+    PAR1  ir al estado 23
+
+
+estado 6
+
+   18 ACT: NA2 . PAR2
+   26 PAR2: . PA PC PTC
+
+    PA  desplazar e ir al estado 24
+
+    PAR2  ir al estado 25
+
+
+estado 7
+
+   16 ALT: AL . TP
+   19 TP: . PAR3
+   20   | . DOT MS
+   27 PAR3: . PA ST PC PTC
+
+    PA   desplazar e ir al estado 26
+    DOT  desplazar e ir al estado 27
+
+    TP    ir al estado 28
+    PAR3  ir al estado 29
+
+
+estado 8
+
+   15 TRS: TS . DOT TIG2 PAR3
+
+    DOT  desplazar e ir al estado 30
+
+
+estado 9
+
+   14 DR: OCD . PAR4
+   28 PAR4: . PA BIN PC PTC
+
+    PA  desplazar e ir al estado 31
+
+    PAR4  ir al estado 32
+
+
+estado 10
+
+   13 SS: SE . DOT TIG1 PAR2
+
+    DOT  desplazar e ir al estado 33
+
+
+estado 11
+
+   11 TR: TRN . DOT DIR
+
+    DOT  desplazar e ir al estado 34
+
+
+estado 12
+
+   12 AA: ED2 . PAR1
+   25 PAR1: . PA NUM PC PTC
+
+    PA  desplazar e ir al estado 22
+
+    PAR1  ir al estado 35
+
+
+estado 13
+
+    1 SEN: SP LA C . LC
+
+    LC  desplazar e ir al estado 36
+
+
+estado 14
+
+    2 C: . MV C
+    2  | MV . C
+    3  | . MV
+    3  | MV .  [LC]
+    4 MV: . TR
+    5   | . AA
+    6   | . SS
+    7   | . DR
+    8   | . TRS
+    9   | . ALT
+   10   | . ACT
+   11 TR: . TRN DOT DIR
+   12 AA: . ED2 PAR1
+   13 SS: . SE DOT TIG1 PAR2
+   14 DR: . OCD PAR4
+   15 TRS: . TS DOT TIG2 PAR3
+   16 ALT: . AL TP
+   17 ACT: . NA1 PAR1
+   18    | . NA2 PAR2
+
+    NA1  desplazar e ir al estado 5
+    NA2  desplazar e ir al estado 6
+    AL   desplazar e ir al estado 7
+    TS   desplazar e ir al estado 8
+    OCD  desplazar e ir al estado 9
+    SE   desplazar e ir al estado 10
+    TRN  desplazar e ir al estado 11
+    ED2  desplazar e ir al estado 12
+
+    $default  reduce usando la regla 3 (C)
+
+    C    ir al estado 37
+    MV   ir al estado 14
+    TR   ir al estado 15
+    AA   ir al estado 16
+    SS   ir al estado 17
+    DR   ir al estado 18
+    TRS  ir al estado 19
+    ALT  ir al estado 20
+    ACT  ir al estado 21
+
+
+estado 15
+
+    4 MV: TR .
+
+    $default  reduce usando la regla 4 (MV)
+
+
+estado 16
+
+    5 MV: AA .
+
+    $default  reduce usando la regla 5 (MV)
+
+
+estado 17
+
+    6 MV: SS .
+
+    $default  reduce usando la regla 6 (MV)
+
+
+estado 18
+
+    7 MV: DR .
+
+    $default  reduce usando la regla 7 (MV)
+
+
+estado 19
+
+    8 MV: TRS .
+
+    $default  reduce usando la regla 8 (MV)
+
+
+estado 20
+
+    9 MV: ALT .
+
+    $default  reduce usando la regla 9 (MV)
+
+
+estado 21
+
+   10 MV: ACT .
+
+    $default  reduce usando la regla 10 (MV)
+
+
+estado 22
+
+   25 PAR1: PA . NUM PC PTC
+
+    NUM  desplazar e ir al estado 38
+
+
+estado 23
+
+   17 ACT: NA1 PAR1 .
+
+    $default  reduce usando la regla 17 (ACT)
+
+
+estado 24
+
+   26 PAR2: PA . PC PTC
+
+    PC  desplazar e ir al estado 39
+
+
+estado 25
+
+   18 ACT: NA2 PAR2 .
+
+    $default  reduce usando la regla 18 (ACT)
+
+
+estado 26
+
+   27 PAR3: PA . ST PC PTC
+
+    ST  desplazar e ir al estado 40
+
+
+estado 27
+
+   20 TP: DOT . MS
+   21 MS: . CLN PAR2
+   22   | . LBT PAR2
+   23   | . TIG1 PAR4
+
+    CLN   desplazar e ir al estado 41
+    LBT   desplazar e ir al estado 42
+    TIG1  desplazar e ir al estado 43
+
+    MS  ir al estado 44
+
+
+estado 28
+
+   16 ALT: AL TP .
+
+    $default  reduce usando la regla 16 (ALT)
+
+
+estado 29
+
+   19 TP: PAR3 .
+
+    $default  reduce usando la regla 19 (TP)
+
+
+estado 30
+
+   15 TRS: TS DOT . TIG2 PAR3
+
+    TIG2  desplazar e ir al estado 45
+
+
+estado 31
+
+   28 PAR4: PA . BIN PC PTC
+
+    BIN  desplazar e ir al estado 46
+
+
+estado 32
+
+   14 DR: OCD PAR4 .
+
+    $default  reduce usando la regla 14 (DR)
+
+
+estado 33
+
+   13 SS: SE DOT . TIG1 PAR2
+
+    TIG1  desplazar e ir al estado 47
+
+
+estado 34
+
+   11 TR: TRN DOT . DIR
+   24 DIR: . ED1 PAR1
+
+    ED1  desplazar e ir al estado 48
+
+    DIR  ir al estado 49
+
+
+estado 35
+
+   12 AA: ED2 PAR1 .
+
+    $default  reduce usando la regla 12 (AA)
+
+
+estado 36
+
+    1 SEN: SP LA C LC .
+
+    $default  reduce usando la regla 1 (SEN)
+
+
+estado 37
+
+    2 C: MV C .
+
+    $default  reduce usando la regla 2 (C)
+
+
+estado 38
+
+   25 PAR1: PA NUM . PC PTC
+
+    PC  desplazar e ir al estado 50
+
+
+estado 39
+
+   26 PAR2: PA PC . PTC
+
+    PTC  desplazar e ir al estado 51
+
+
+estado 40
+
+   27 PAR3: PA ST . PC PTC
+
+    PC  desplazar e ir al estado 52
+
+
+estado 41
+
+   21 MS: CLN . PAR2
+   26 PAR2: . PA PC PTC
+
+    PA  desplazar e ir al estado 24
+
+    PAR2  ir al estado 53
+
+
+estado 42
+
+   22 MS: LBT . PAR2
+   26 PAR2: . PA PC PTC
+
+    PA  desplazar e ir al estado 24
+
+    PAR2  ir al estado 54
+
+
+estado 43
+
+   23 MS: TIG1 . PAR4
+   28 PAR4: . PA BIN PC PTC
+
+    PA  desplazar e ir al estado 31
+
+    PAR4  ir al estado 55
+
+
+estado 44
+
+   20 TP: DOT MS .
+
+    $default  reduce usando la regla 20 (TP)
+
+
+estado 45
+
+   15 TRS: TS DOT TIG2 . PAR3
+   27 PAR3: . PA ST PC PTC
+
+    PA  desplazar e ir al estado 26
+
+    PAR3  ir al estado 56
+
+
+estado 46
+
+   28 PAR4: PA BIN . PC PTC
+
+    PC  desplazar e ir al estado 57
+
+
+estado 47
+
+   13 SS: SE DOT TIG1 . PAR2
+   26 PAR2: . PA PC PTC
+
+    PA  desplazar e ir al estado 24
+
+    PAR2  ir al estado 58
+
+
+estado 48
+
+   24 DIR: ED1 . PAR1
+   25 PAR1: . PA NUM PC PTC
+
+    PA  desplazar e ir al estado 22
+
+    PAR1  ir al estado 59
+
+
+estado 49
+
+   11 TR: TRN DOT DIR .
+
+    $default  reduce usando la regla 11 (TR)
+
+
+estado 50
+
+   25 PAR1: PA NUM PC . PTC
+
+    PTC  desplazar e ir al estado 60
+
+
+estado 51
+
+   26 PAR2: PA PC PTC .
+
+    $default  reduce usando la regla 26 (PAR2)
+
+
+estado 52
+
+   27 PAR3: PA ST PC . PTC
+
+    PTC  desplazar e ir al estado 61
+
+
+estado 53
+
+   21 MS: CLN PAR2 .
+
+    $default  reduce usando la regla 21 (MS)
+
+
+estado 54
+
+   22 MS: LBT PAR2 .
+
+    $default  reduce usando la regla 22 (MS)
+
+
+estado 55
+
+   23 MS: TIG1 PAR4 .
+
+    $default  reduce usando la regla 23 (MS)
+
+
+estado 56
+
+   15 TRS: TS DOT TIG2 PAR3 .
+
+    $default  reduce usando la regla 15 (TRS)
+
+
+estado 57
+
+   28 PAR4: PA BIN PC . PTC
+
+    PTC  desplazar e ir al estado 62
+
+
+estado 58
+
+   13 SS: SE DOT TIG1 PAR2 .
+
+    $default  reduce usando la regla 13 (SS)
+
+
+estado 59
+
+   24 DIR: ED1 PAR1 .
+
+    $default  reduce usando la regla 24 (DIR)
+
+
+estado 60
+
+   25 PAR1: PA NUM PC PTC .
+
+    $default  reduce usando la regla 25 (PAR1)
+
+
+estado 61
+
+   27 PAR3: PA ST PC PTC .
+
+    $default  reduce usando la regla 27 (PAR3)
+
+
+estado 62
+
+   28 PAR4: PA BIN PC PTC .
+
+    $default  reduce usando la regla 28 (PAR4)
