@@ -1,9 +1,0 @@
-startPrevebot{
-detect.Door();
-transport.sample("Cosa");
-straight(67);
-turn.right(89);
-detect.Battery();
-detect.Colision(); 
-endPrevebot;
-}
