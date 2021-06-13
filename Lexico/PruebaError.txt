@@ -1,0 +1,13 @@
+startPrevebot{
+    screen(1); /* Imagen sleepy-face*/
+    openDoor(1);
+    closeDoor(1);
+    sense.door();
+    sense.carry();
+    sense.obstacle();   
+    screen(3); /*Imagen happy-face*/
+    talk(1); /* Activa el micrófono para que hable el usuario */
+    sense.battery();
+    talk(0); /* Desactiva el micrófono */
+    upload();
+}
