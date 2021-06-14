@@ -3,6 +3,7 @@
 %{
     #include <stdio.h>
     #include <string.h>
+    #include <stdbool.h>
     #include "sem.h"
     void insertatoken(char tipo[], char var[], int num);
 %}
@@ -35,7 +36,7 @@ TIG2 medicine|cloth|sample
 TRN turn
 ED1 right|left
 ED2 straight|back
-BIN 0|1
+BIN true|false
 
 %%
 {SP} {
@@ -110,7 +111,11 @@ BIN 0|1
     }
 {BIN} {
         insertatoken("Boolean",yytext,yylineno);
-        yylval.boleano = atoi(yytext);
+        if(strcmp(yytext,"true") == 0){
+            yylval.boleano = 1;
+        }else if(strcmp(yytext, "false") == 0){
+            yylval.boleano = 0;
+        }
         return BIN;
     }
 {ParenA} {
@@ -148,9 +153,9 @@ BIN 0|1
         return NUM;
     }
 
-{Coment}{Todo}* { /* Ignora comentario en linea */}
-{Coment2a}{Todito}*{Coment2c} { /* Ignora comentario en bloque */}
-{Blank}* { /* Ignora espacios, tabulaciones y enters */}
+{Coment}{Todo}* { /* Ignora comentario en linea */ ; }
+{Coment2a}{Todito}*{Coment2c} { /* Ignora comentario en bloque */ ; }
+{Blank}* { /* Ignora espacios, tabulaciones y enters */ ; }
 %%
 
 void insertatoken(char tipo[], char var[], int num)
