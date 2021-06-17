@@ -1,0 +1,19 @@
+startPrevebot{
+    openDoor(1);
+    sense.carry();
+    closeDoor(1);
+    sense.door();
+    transport.sample("Módulo 5");
+    turn.left(3000);
+    straight(150000);
+    sense.obstacle();
+    turn.right(3000);
+    sense.obstacle();
+    straight(15000);
+    sense.obstacle();   
+    turn.left(2000);
+    sense.obstacle();
+    straight(5000);
+    screen(3); /* Imagen happy-face*/
+    sense.battery();     
+}

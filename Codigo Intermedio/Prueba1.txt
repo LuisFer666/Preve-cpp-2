@@ -1,0 +1,18 @@
+startPrevebot{
+	openDoor(true);
+	closeDoor(1);
+	screen(1);
+	turn.right(30);
+	turn.left(10);
+	sense.carry();
+	sense.door();
+	transport.cloth("Módulo 1");
+	straight(300000);
+	sense.obstacle();
+	straight(1000);
+	back(100);
+	alert.clean();
+	alert.lowBattery();
+	alert.obstacle(1);
+	alert("Alerta");
+}
